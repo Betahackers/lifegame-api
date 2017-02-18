@@ -9,7 +9,7 @@ task fake_data: :environment do
     card = Card.create(
       title: FFaker::HipsterIpsum.sentence[0..139],
       person: persons.sample,
-      image_url: FFaker::Avatar
+      image_url: FFaker::Avatar.image
     )
     2.times do |a|
       answer = Answer.create(
