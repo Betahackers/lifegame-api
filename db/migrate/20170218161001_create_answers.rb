@@ -3,7 +3,7 @@ class CreateAnswers < ActiveRecord::Migration[5.0]
     create_table :answers do |t|
       t.string :text
       t.string :kind
-      t.references :cards
+      t.references :card
 
       t.timestamps
     end

@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20170218161146) do
   create_table "answers", force: :cascade do |t|
     t.string   "text"
     t.string   "kind"
-    t.integer  "cards_id"
+    t.integer  "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cards_id"], name: "index_answers_on_cards_id", using: :btree
+    t.index ["card_id"], name: "index_answers_on_card_id", using: :btree
   end
 
   create_table "cards", force: :cascade do |t|
@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 20170218161146) do
   end
 
   create_table "points", force: :cascade do |t|
-    t.integer  "answers_id"
+    t.integer  "answer_id"
     t.integer  "value"
     t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["answers_id"], name: "index_points_on_answers_id", using: :btree
+    t.index ["answer_id"], name: "index_points_on_answer_id", using: :btree
   end
 
 end
