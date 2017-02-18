@@ -67,19 +67,20 @@ fclose($log_fh);
 fclose($sql_fh);
 
 function create_insert_card($id, $title, $person) {
-    $title = addslashes($title);
-    $person = addslashes($person);
+    $title = str_replace("'", "''", $title);
+    $person = str_replace("'", "''", $person);
     return ("INSERT INTO cards (id, title, person, created_at, updated_at) " .
             "VALUES ($id, '$title', '$person', current_timestamp, current_timestamp);");
 }
 
 function create_insert_answer($id, $cards_id, $kind, $text) {
-    $text = addslashes($text);
+    $text = str_replace("'", "''", $text);
     return ("INSERT INTO answers (id, card_id, kind, text, created_at, updated_at) " .
             "VALUES ($id, $cards_id, '$kind', '$text', current_timestamp, current_timestamp);");
 }
 
 function create_insert_points($id, $answers_id, $slug, $value) {
+    if (empty($value)) $value = 0;
     return ("INSERT INTO points (id, answer_id, slug, value, created_at, updated_at) " .
             "VALUES ($id, $answers_id, '$slug', $value, current_timestamp, current_timestamp);");
 }
