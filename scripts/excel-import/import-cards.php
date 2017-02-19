@@ -26,7 +26,7 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 $cards_id = 0;
 $answers_id = 0;
 $points_id = 0;
-$num_rows = 1;
+$num_rows = 0;
 $point_slugs = array(
     'love'   => 'E',
     'money'  => 'F',
@@ -35,7 +35,8 @@ $point_slugs = array(
 );
 foreach ($sheetData as $row) {
     // Skip the column headers or empty rows
-    if (($row['A'] == 'Card Title') || empty($row['A'])) {
+    if (($num_rows == 0) || empty($row['A'])) {
+        $num_rows++;
         continue;
     }
     

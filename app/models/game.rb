@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
   def cards
-    @cards ||= Card.shuffle(70)
+    @cards ||= Card.ordered(50)
   end
 
   def endings
