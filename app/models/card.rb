@@ -11,7 +11,7 @@ class Card < ApplicationRecord
   end
 
 
-  validates_inclusion_of :person, in: :PERSON_ENUM
+  validates_inclusion_of :person, in: PERSON_ENUM
   validates_presence_of :person
   validates_presence_of :title
   validates_presence_of :age_constraint
