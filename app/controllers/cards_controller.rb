@@ -12,6 +12,6 @@ class CardsController < ApplicationController
   end
 
   def default_limit
-    50
+    80
   end
 end
