@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :endings, only: :index
   resource :game, only: :show
   resources :cards, only: :index
