@@ -4,6 +4,6 @@ class Game < ApplicationRecord
   end
 
   def endings
-    @endings ||= Ending.all
+    @endings ||= Ending.randomized
   end
 end
