@@ -72,7 +72,8 @@ class Importer
     money = row[5] || 0
     fun = row[6] || 0
     health = row[7] || 0
-    card = Card.where(title: title, person: person).first_or_create
+    age_constraint = row[9]
+    card = Card.where(title: title, person: person, age_constraint: age_constraint).first_or_create
     answer = Answer.create(
       card: card,
       text: answer_text,
