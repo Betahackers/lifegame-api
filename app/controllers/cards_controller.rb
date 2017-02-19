@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
+
   def index
-    @cards = Card.shuffle(limit)
+    @cards = Card.ordered(limit)
     render json: @cards, include: "answers.points"
   end
 
@@ -11,6 +12,6 @@ class CardsController < ApplicationController
   end
 
   def default_limit
-    70
+    50
   end
 end

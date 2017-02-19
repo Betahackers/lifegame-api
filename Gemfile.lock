@@ -44,6 +44,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    awesome_print (1.7.0)
     builder (3.2.3)
     byebug (9.0.6)
     concurrent-ruby (1.0.4)
@@ -107,6 +108,10 @@ GEM
       ffi (>= 0.5.0)
     rollbar (2.14.0)
       multi_json
+    rubyzip (1.2.1)
+    simple_xlsx_reader (1.0.2)
+      nokogiri
+      rubyzip
     spring (2.0.1)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -132,6 +137,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  awesome_print
   byebug
   ffaker
   listen (~> 3.0.5)
@@ -139,6 +145,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.1)
   rollbar
+  simple_xlsx_reader
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
@@ -147,4 +154,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.14.4
+   1.13.7
