@@ -42,7 +42,7 @@ foreach ($sheetData as $row) {
     // Insert card
     if ($num_rows % 2 != 0) {
         $cards_id++;
-        write_sql(create_insert_card($cards_id, $row['A'], $row['B']),
+        write_sql(create_insert_card($cards_id, $row['A'], $row['B'], $row['J']),
                 $sql_fh);
     }
     
@@ -66,14 +66,17 @@ logit("Done!", $log_fh);
 fclose($log_fh);
 fclose($sql_fh);
 
-function create_insert_card($id, $title, $person) {
+function create_insert_card($id, $title, $person, $age) {
     $title = str_replace("'", "''", $title);
     $person = str_replace("'", "''", $person);
-    return ("INSERT INTO cards (id, title, person, created_at, updated_at) " .
-            "VALUES ($id, '$title', '$person', current_timestamp, current_timestamp);");
+    if (empty($age)) $age = -100;
+    return ("INSERT INTO cards (id, title, person, created_at, updated_at, age_constraint) " .
+            "VALUES ($id, '$title', '$person', current_timestamp, " .
+            "current_timestamp, $age);");
 }
 
 function create_insert_answer($id, $cards_id, $kind, $text) {
+    $kind = ucfirst(strtolower($kind));
     $text = str_replace("'", "''", $text);
     return ("INSERT INTO answers (id, card_id, kind, text, created_at, updated_at) " .
             "VALUES ($id, $cards_id, '$kind', '$text', current_timestamp, current_timestamp);");
