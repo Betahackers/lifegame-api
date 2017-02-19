@@ -44,6 +44,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    awesome_print (1.7.0)
     builder (3.2.3)
     byebug (9.0.6)
     concurrent-ruby (1.0.4)
@@ -136,6 +137,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  awesome_print
   byebug
   ffaker
   listen (~> 3.0.5)
@@ -152,4 +154,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.14.4
+   1.13.7
