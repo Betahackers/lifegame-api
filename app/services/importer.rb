@@ -58,6 +58,10 @@ class Importer
     ["Endings"]
   end
 
+  # Card Title,Character,Left/Right,Answer Text,Love,Money,Fun,Health,Possible Death?,Age Constraint,Base Probability,Probability change per year
+  # "You have an STD, you have to stop having sex for a month, until we're completely sure you're healed.",doctor,Left,"No way, man.",0,0,10,-5,,-100,,
+  # "You have an STD, you have to stop having sex for a month, until we're completely sure you're healed.",doctor,Right,Alright man.,3,-3,3,0,,-100,,
+
   def import_card(row)
     title = row[0].to_s.strip
     return if title.blank? || title == "Card Title"
