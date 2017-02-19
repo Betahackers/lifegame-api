@@ -51,7 +51,7 @@ RailsAdmin.config do |config|
 
   config.authenticate_with do
     authenticate_or_request_with_http_basic('Site Message') do |username, password|
-      username == 'lifegameadmin' && password == '21n379125bwqc8y9v2t578t'
+      username == 'myrandomstory' && password == ENV['ADMIN_PASSWORD']
     end
   end
 
