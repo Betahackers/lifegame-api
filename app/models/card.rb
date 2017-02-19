@@ -2,12 +2,24 @@ class Card < ApplicationRecord
   DEFAULT_START_AGE = 15
   DEFAULT_AGE_INCREMENT = 1
 
+  PERSON_ENUM = ['drug dealer', 'seller', 'smoky granny', 'friend', 'authority', 'kid', 'parents', 'ex', 'stranger', 'mum', 'trump', 'doctor', 'dad', 'guru', 'boss', 'sex friends', 'colleague', 'dog', 'lover', 'therapist']
+
   has_many :answers, dependent: :destroy
 
+  validates_each :answers do |card, attr, value|
+   card.errors.add attr, "too much answers for card" if card.answers.size > 2
+  end
+
+
+  validates_inclusion_of :person, in: :PERSON_ENUM
   validates_presence_of :person
   validates_presence_of :title
   validates_presence_of :age_constraint
   validates_presence_of :answers
+
+  validates_numericality_of :age_constraint
+
+
 
   def self.ordered(limit)
     cards = Card.all.includes(answers: :points).all
@@ -48,6 +60,10 @@ class Card < ApplicationRecord
     end
 
     card_deck
+  end
+
+  def person_enum
+    PERSON_ENUM
   end
 
   def constrained_by_age?(age)

@@ -32,12 +32,21 @@ RailsAdmin.config do |config|
     show
     edit
     delete
-    show_in_app
 
     ## With an audit adapter, you can add:
     # history_index
     # history_show
   end
+
+
+  %w(Answer Card Ending Point).each do |imodel|
+      config.model "#{imodel}" do
+        list do
+          exclude_fields :updated_at
+          exclude_fields :created_at
+        end
+      end
+    end
 
   config.excluded_models << "Game"
   config.label_methods << :text
@@ -46,7 +55,37 @@ RailsAdmin.config do |config|
     list do
       exclude_fields :image_url
     end
+    edit do
+      exclude_fields :image_url
+      exclude_fields :answers
+    end
+    weight -100
   end
+  config.model 'Answer' do
+    list do
+      field :card
+      field :kind
+      field :text
+      field :points
+      exclude_fields :id
+    end
+    weight -80
+
+  end
+  config.model 'Point' do
+    edit do
+      field :answer do
+        read_only true
+      end
+      field :slug do
+        read_only true
+      end
+      field :value
+    end
+    weight -50
+
+  end
+
 
 
   config.authenticate_with do
