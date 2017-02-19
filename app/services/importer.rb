@@ -88,7 +88,7 @@ class Importer
 
   def import_ending(row)
     return if row[1].to_s.strip == "Min/Max" || row[0].to_s.blank?
-    Ending.create(reason: [row[0], row[1]].join("_").downcase, cause: row[2], effect: row[3])
+    Ending.create(reason: [row[0].strip, row[1].strip].join("_").downcase, cause: row[2], effect: row[3])
   end
 
   def show_counts
