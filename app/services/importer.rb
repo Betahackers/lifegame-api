@@ -12,7 +12,6 @@ class Importer
     show_counts
   end
 
-  private
 
   def import_cards
     Card.destroy_all
@@ -33,6 +32,8 @@ class Importer
       end
     end
   end
+
+  private
 
   def sheets
     @doc.sheets
